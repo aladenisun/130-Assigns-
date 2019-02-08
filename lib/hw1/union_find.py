@@ -165,6 +165,7 @@ if __name__ == "__main__":
     # QUICK FIND
     # iteration
     set_szs = [10, 100, 1000, 10000]
+    set_szs = [7, 8, 9]
     timing = []
 
     # gives the timing for union operation only, you might want to do this for all functions you wrote.
@@ -193,6 +194,7 @@ if __name__ == "__main__":
     # UNION FIND
     # iteration
     set_szs = [10, 100, 1000, 10000]
+    set_szs = [7, 8, 9]
     timing = []
 
     # gives the timing for union operation only, you might want to do this for all functions you wrote.
@@ -221,6 +223,7 @@ if __name__ == "__main__":
     #WEIGHTED UNION
     # iteration
     set_szs = [10, 100, 1000, 10000]
+    set_szs = [7, 8, 9]
     timing = []
 
     # gives the timing for union operation only, you might want to do this for all functions you wrote.
@@ -250,6 +253,7 @@ if __name__ == "__main__":
     #COMPRESSED UNION
     # iteration
     set_szs = [10, 100, 1000, 10000]
+    set_szs = [7, 8, 9]
     timing = []
 
     # gives the timing for union operation only, you might want to do this for all functions you wrote.
@@ -278,6 +282,8 @@ if __name__ == "__main__":
     #WEIGHTED COMPRESSED UNION
     # iteration
     set_szs = [10, 100, 1000, 10000]
+    set_szs = [7, 8, 9]
+    set_sz = [7, 8, 9]
     timing = []
 
     # gives the timing for union operation only, you might want to do this for all functions you wrote.
