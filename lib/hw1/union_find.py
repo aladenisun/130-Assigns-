@@ -8,8 +8,8 @@
 
 import time
 import random
-#import matplotlib.pyplot as plt
-import self as self
+import matplotlib.pyplot as plt
+#import self as self
 
 
 class UF(object):
@@ -27,7 +27,7 @@ class UF(object):
             self.id.append(x)
 
         for x in range(N):
-            self.sz.append(0)
+            self.sz.append(1)
 
 
     def qf_union(self, p, q):
@@ -162,8 +162,9 @@ class UF(object):
 
 if __name__ == "__main__":
 
+    # QUICK FIND
     # iteration
-    set_szs = [10]
+    set_szs = [10, 100, 1000, 10000]
     timing = []
 
     # gives the timing for union operation only, you might want to do this for all functions you wrote.
@@ -187,12 +188,123 @@ if __name__ == "__main__":
 
         print(total_time)
 
-    # this plots things in log scale (pls google it), you need to add matplotlib to your virtualenv first!
+    plt.plot(set_szs, timing)
+
+    # UNION FIND
+    # iteration
+    set_szs = [10, 100, 1000, 10000]
+    timing = []
+
+    # gives the timing for union operation only, you might want to do this for all functions you wrote.
+    for set_sz in set_szs:
+        # initialize network nodes
+        inodes = UF()
+        inodes.qf_init(set_sz)
+
+        t0 = time.time()
+
+        for idx in range(set_sz - 1):
+            rp = random.randint(0, set_sz - 1)
+            rq = random.randint(0, set_sz - 1)
+            inodes.qu_union(rp, rq)
+
+        t1 = time.time()
+
+        total_time = t1 - t0
+
+        timing.append(total_time)
+
+        print(total_time)
+
+    plt.plot(set_szs, timing)
+
+    #WEIGHTED UNION
+    # iteration
+    set_szs = [10, 100, 1000, 10000]
+    timing = []
+
+    # gives the timing for union operation only, you might want to do this for all functions you wrote.
+    for set_sz in set_szs:
+        # initialize network nodes
+        inodes = UF()
+        inodes.qf_init(set_sz)
+
+        t0 = time.time()
+
+        for idx in range(set_sz - 1):
+            rp = random.randint(0, set_sz - 1)
+            rq = random.randint(0, set_sz - 1)
+            inodes.wqu_union(rp, rq)
+
+        t1 = time.time()
+
+        total_time = t1 - t0
+
+        timing.append(total_time)
+
+        print(total_time)
+
+    plt.plot(set_szs, timing)
 
 
-    # plt.plot(set_szs, timing)
-    # plt.xscale('log')
-    # plt.yscale('log')
-    # plt.title('log')
-    # plt.ylabel('some numbers')
-    # plt.show()
+    #COMPRESSED UNION
+    # iteration
+    set_szs = [10, 100, 1000, 10000]
+    timing = []
+
+    # gives the timing for union operation only, you might want to do this for all functions you wrote.
+    for set_sz in set_szs:
+        # initialize network nodes
+        inodes = UF()
+        inodes.qf_init(set_sz)
+
+        t0 = time.time()
+
+        for idx in range(set_sz - 1):
+            rp = random.randint(0, set_sz - 1)
+            rq = random.randint(0, set_sz - 1)
+            inodes.pqu_union(rp, rq)
+
+        t1 = time.time()
+
+        total_time = t1 - t0
+
+        timing.append(total_time)
+
+        print(total_time)
+
+    plt.plot(set_szs, timing)
+
+    #WEIGHTED COMPRESSED UNION
+    # iteration
+    set_szs = [10, 100, 1000, 10000]
+    timing = []
+
+    # gives the timing for union operation only, you might want to do this for all functions you wrote.
+    for set_sz in set_szs:
+        # initialize network nodes
+        inodes = UF()
+        inodes.qf_init(set_sz)
+
+        t0 = time.time()
+
+        for idx in range(set_sz - 1):
+            rp = random.randint(0, set_sz - 1)
+            rq = random.randint(0, set_sz - 1)
+            inodes.wpqu_union(rp, rq)
+
+        t1 = time.time()
+
+        total_time = t1 - t0
+
+        timing.append(total_time)
+
+        print(total_time)
+
+    plt.plot(set_szs, timing)
+
+    plt.xscale('log')
+    plt.yscale('log')
+    plt.title('log')
+    plt.ylabel('some numbers')
+    plt.show()
