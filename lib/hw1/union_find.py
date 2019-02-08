@@ -293,6 +293,7 @@ if __name__ == "__main__":
             rq = random.randint(0, set_sz - 1)
             inodes.wpqu_union(rp, rq)
 
+
         t1 = time.time()
 
         total_time = t1 - t0
