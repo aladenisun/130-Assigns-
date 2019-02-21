@@ -39,7 +39,7 @@ class Test_UF(object):
 
         expected = sorted(arr_under_test.get_id())
 
-        actual = arr_under_test.insertion_sort()
+        actual = arr_under_test.insertion_sort
 
         assert expected == actual
 
@@ -52,7 +52,7 @@ class Test_UF(object):
 
         expected = sorted(arr_under_test.get_id())
 
-        actual = arr_under_test.shell_sort()
+        actual = arr_under_test.shell_sort
 
         assert expected == actual
 

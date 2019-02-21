@@ -62,33 +62,46 @@ class Sorting(object):
 
         return self.id
 
+    @property
     def insertion_sort(self):
-        """Insertion sort is a simple sorting algorithm that builds the final
-        sorted array (or list) one item at a time. More efficient in practice
-        than most other simple quadratic (i.e., O(n^2)) algorithms such as
-        selection sort or bubble sort specifically an
 
-        """
+        for i_idx in range (1, len(self.id)):
+            value = self.id[i_idx]
+            j_idx = i_idx-1
+            while j_idx >= 0 and value < self.id[j_idx]:
+                self.id[j_idx+1] = self.id[j_idx]
+                j_idx = j_idx-1
+                self.id[j_idx+1] = value
 
-        return 1
+        return self.id
 
+    @property
     def shell_sort(self):
         """Shell sort also known as  or Shell's method, is an in-place comparison sort.
         It can be seen as either a generalization of sorting by exchange (bubble sort)
         or sorting by insertion (insertion sort).
-
         """
 
-        return 1
+        mid = int(len(self.id) / 2)
+        while mid > 0:
+            for i_idx in range(mid, len(self.id),1):
+                j_idx = i_idx
+                temp = self.id[i_idx]
+                while j_idx >= mid and self.id[j_idx - mid] > temp:
+                    self.id[j_idx] = self.id[j_idx - mid]
+                    j_idx = j_idx-mid
+                self.id[j_idx] = temp
+            mid = int(mid / 2)
+        return self.id
 
     def heap_sort(self):
         """Heapsort is an improved selection sort: it divides its input into a sorted
         and an unsorted region, and it iteratively shrinks the unsorted region by
         extracting the largest element and moving that to the sorted region.
-
         """
 
-        return 1
+
+        return self.id
 
     def merge_sort(self):
         """Merge sort is a divide and conquer algorithm that was invented
