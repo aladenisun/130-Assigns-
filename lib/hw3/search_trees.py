@@ -2,7 +2,6 @@
 import time
 import random
 
-
 class Array_Search:
     def __init__(self, array):
         self.array = array
@@ -19,13 +18,25 @@ class Array_Search:
             idx = idx+1
         return False
 
-    def bsearch(self, val):
+    def bsearch(self, val): #binary search algorithm
+        lo = 0
+        hi = len(self.array)-1
+        bool = False
 
-        return False
+        while lo <= hi and not bool:
+            mid = int((lo+hi)/2)
+            if self.array[mid] == val:
+                bool = True
+            else:
+                if val < self.array[mid]:
+                    lo = mid-1
+                else:
+                    hi = mid + 1
+        return bool
 
 
-class BST_Node:
-    def __init__(self, val):
+class BST_Node: #binary search tree algorithm
+    def __init__(self, val): #constructor that creates a node with data val.
         self.val = val
         self.left = None
         self.right = None
@@ -38,18 +49,19 @@ class BST:
     def init_bst(self, val):
         self.root = BST_Node(val)
 
-    def insert(self, val):
+    def insert(self, val): #inserts date in a new node
         if (self.root is None):
             self.init_bst(val)
         else:
             self.insertNode(self.root, val)
 
     def insertNode(self, current, val):
+        
+
 
         return False
 
     def bsearch(self, val):
-
 
         return False
 
@@ -58,7 +70,6 @@ class BST:
         return False
 
     def delete(self, val):
-
         return False
 
 
@@ -75,7 +86,7 @@ RED = True
 BLACK = False
 
 
-class RBBST:
+class RBBST: #red black tree algorithm
     def __init__(self):
         self.root = None
 
