@@ -56,7 +56,7 @@ class BST:
             self.insertNode(self.root, val)
 
     def insertNode(self, current, val):
-        
+
 
 
         return False
@@ -68,7 +68,6 @@ class BST:
     def searchNode(self, current, val):
 
         return False
-
     def delete(self, val):
         return False
 
