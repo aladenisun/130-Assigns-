@@ -56,9 +56,17 @@ class BST:
             self.insertNode(self.root, val)
 
     def insertNode(self, current, val):
-
-
-
+        if self.val:
+            if val < self.val:
+                if self.left is None:
+                    self.left = self.Node(val)
+                else:
+                    self.left.insertNode(val)
+            elif val > self.data:
+                    if self.right is None:
+                        self.right = self.Node(val)
+                    else: self.right.insertNode(val)
+        else: self.data = val
         return False
 
     def bsearch(self, val):
@@ -68,7 +76,7 @@ class BST:
     def searchNode(self, current, val):
 
         return False
-    
+
     def delete(self, val):
         return False
 
