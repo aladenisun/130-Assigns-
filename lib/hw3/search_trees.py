@@ -72,7 +72,7 @@ class BST:
     def bsearch(self, val):
 
         return False
-    
+
 
 
     def searchNode(self, current, val):
