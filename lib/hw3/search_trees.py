@@ -34,12 +34,41 @@ class Array_Search:
                     hi = mid + 1
         return bool
 
+    def delete(self, val):
+        if self is None:
+            return None
+        if val < self.val:
+            self.left = self.left.delete(val)
+        elif val >self.val:
+            self.right = self.right.delete(val)
+        else:
+            #with 1 child
+            if self.left is None:
+                new = self.right
+                self = None
+                return new
+            elif self.right is None:
+                new = self.left
+                self = None
+                return new
+            #with two children
+            new = self.minNode(self.right)
+            self.val = new.val
+            self.right = self.right.delete(new.val)
+            return self
+
+        def minNode(self, node):
+            current = node
+            while (current.left is not None):
+                current = current.left
+                return current
 
 class BST_Node: #binary search tree algorithm
     def __init__(self, val): #constructor that creates a node with data val.
         self.val = val
         self.left = None
         self.right = None
+
 
 
 class BST:
@@ -56,29 +85,34 @@ class BST:
             self.insertNode(self.root, val)
 
     def insertNode(self, current, val):
-        if self.val:
-            if val < self.val:
-                if self.left is None:
-                    self.left = self.Node(val)
+        if current.val:
+            if val <= current.val:
+                if current.left is None:
+                    current.left = BST_Node(val)
                 else:
-                    self.left.insertNode(val)
-            elif val > self.data:
+                    self.insertNode(current.left, val)
+            elif val > current.val:
                     if self.right is None:
-                        self.right = self.Node(val)
-                    else: self.right.insertNode(val)
-        else: self.data = val
-        return False
+                        current.right = BST_Node(val)
+                    else: self.insertNode(current.right, val)
+        else: current.right = BST_Node(val)
+
 
     def bsearch(self, val):
-
-        return False
+        return self.searchNode(self.root, val)
 
     def searchNode(self, current, val):
-
-        return False
+        if(current is None):
+            return False
+        elif(current.val == val):
+            return True
+        elif(current.val > val):
+            return self.bsearch(current.left, val)
+        else: return self.bsearch(current.right,val)
 
     def delete(self, val):
-        return False
+     if self.root is not None:
+         return self.root.delete(val)
 
 
 
@@ -128,10 +162,6 @@ class RBBST: #red black tree algorithm
             self.insertNode(self.root, val)
 
     def insertNode(self, current, val):
-
-
-
-
         return False
 
     def bsearch(self, val):
