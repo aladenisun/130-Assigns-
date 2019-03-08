@@ -101,6 +101,7 @@ class BST:
     def bsearch(self, val):
         return self.searchNode(self.root, val)
 
+
     def searchNode(self, current, val):
         if(current is None):
             return False
@@ -114,14 +115,13 @@ class BST:
      if self.root is not None:
          return self.root.delete(val)
 
-
-
 class RBBST_Node:
     def __init__(self, val, color):
         self.val = val
         self.left = None
         self.right = None
         self.color = color
+        self.parent =None
 
 
 RED = True
@@ -136,20 +136,41 @@ class RBBST: #red black tree algorithm
         self.root = RBBST_Node(val, color)
 
     def is_red(self, current):
-
-
-
-        return False
+        return current.RED
 
     def rotate_left(self, current):
+        sister = current.right
+        current.right = sister.left
 
-
-
-        return False
+        if sister.left != None:
+            sister.left.parent = current
+        sister.parent = current.parent
+        if current.parent == None:
+            self.root = sister
+        else:
+            if current == current.parent.left:
+                current.parent.left = sister
+            else:
+                current.parent.right = sister
+        sister.left = current
+        current.parent = sister
 
     def rotate_right(self, current):
+        sister = current.left
+        current.left = sister.right
 
-        return False
+        if sister.right != None:
+            sister.right.parent = current
+        sister.parent = current.parent
+        if current.parent == None:
+            self.root = sister
+        else:
+            if current == current.parent.right:
+                current.parent.right = sister
+            else:
+                current.parent.left = sister
+        sister.right = current
+        current.parent = sister
 
     def flip_colors(self, current):
 

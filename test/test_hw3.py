@@ -34,19 +34,18 @@ class Test_Search(object):
 
         assert expected == actual
 
-
     def test_rbbst_0(self):
 
-        # initialize testbed
+        #initialize testbed
+
         set_sz = 10
         op_under_test = RBBST()
-
         vals = random.sample(range(1, 100), set_sz)
 
         for idx in range(set_sz - 1):
             op_under_test.insert(vals[idx])
 
-        # python search result
+        #python search result
         key = vals[9]
         expected = vals.index(key)
 
