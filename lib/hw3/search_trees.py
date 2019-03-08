@@ -39,7 +39,7 @@ class Array_Search:
             return None
         if val < self.val:
             self.left = self.left.delete(val)
-        elif val >self.val:
+        elif val > self.val:
             self.right = self.right.delete(val)
         else:
             #with 1 child
