@@ -173,8 +173,13 @@ class RBBST: #red black tree algorithm
         current.parent = sister
 
     def flip_colors(self, current):
+        if self.is_red(current) is False and self.is_red(current.left) is True and self.is_red(current) is True:
+            current.color = RED
+            current.left.color = BLACK
+            current.right.color = BLACK
+        else:
+            return False
 
-        return False
 
     def insert(self, val):
         if (self.root is None):
@@ -182,16 +187,56 @@ class RBBST: #red black tree algorithm
         else:
             self.insertNode(self.root, val)
 
+
     def insertNode(self, current, val):
-        return False
+        current.color = RBBST_Node.RED
+        while current != self.root and current.parent.color == RBBST_Node.RED:
+            if current.parent == current.parent.parent.left:
+                i = current.parent.parent.right
+                if i and i.color - RBBST_Node.RED:
+                    current.parent.color = RBBST_Node.BLACK
+                    i.color = RBBST_Node.BLACK
+                    current.parent.parent.color = RBBST_Node.RED
+                    current = current.parent.parent
+                else:
+                    if current == current.parent.right:
+                        current = current.parent
+                        self.rotate_left(current)
+                    current.parent.color = RBBST_Node.BLACK
+                    current.parent.parent.color = RBBST_Node.RED
+                    self.rotate_right(current.parent.parent)
+            else:
+                i = current.parent.left
+                if i and i.color == RBBST_Node.RED:
+                    current.parent.color = RBBST_Node.BLACK
+                    i.color = RBBST_Node.BLACK
+                    current.parent.parent.color = RBBST_Node.RED
+                    current = current.parent.parent
+                else:
+                    if current == current.parent.left:
+                        current = current.parent
+                        self.rotate_right(current)
+                    current.parent.color = RBBST_Node.BLACK
+                    current.parent.parent.color = RBBST_Node.RED
+                    self.rotate_left(current.parent.parent)
+                self.root.color = RBBST_Node.BLACK
 
     def bsearch(self, val):
+        if self.root is not None:
+            return self.searchNode(self.root, val)
+        else:
+            return False
 
-        return False
 
     def searchNode(self, current, val):
-
-        return False
+        if current == None:
+             current = self.root
+        while current != None and val != current.val:
+            if val < current.val:
+                current = current.left
+            else:
+                current = current.right
+        return current
 
 if __name__ == "__main__":
 
