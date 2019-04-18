@@ -5,11 +5,14 @@ class Digraph:
         """Initializes this digraph."""
         self.nodes = set()
         self.edges = 0
+       # self.indegree[]
+        #self.adj[]
 
     def add_node(self, node):
         """adds vertices to your graph"""
-
+        #create a new node with the constructor properties
         return 1
+
     def add_edge(self, last, first):
         """creates edges between two given vertices in your graph"""
         
@@ -17,7 +20,6 @@ class Digraph:
 
     def has_edge(self, first, last):   
         """checks if a connection exists between two given nodes in your graph"""
-        
 
         return 1
 
