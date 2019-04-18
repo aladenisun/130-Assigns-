@@ -11,6 +11,7 @@ class Digraph:
     def add_node(self, node):
         """adds vertices to your graph"""
         #create a new node with the constructor properties
+
         return 1
 
     def add_edge(self, last, first):
