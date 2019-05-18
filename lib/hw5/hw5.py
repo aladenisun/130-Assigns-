@@ -119,6 +119,7 @@ def depth_first_search(graph, source, sink):
     path = [v for v, _, _ in stack]
     return path, reserve
 
+
 def initialize(graph, source):
     d = {}
     p = {}
