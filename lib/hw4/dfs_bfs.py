@@ -5,8 +5,7 @@ class Graph:
 		self.graph = defaultdict(list)
 
 	def addEdge(self,u,v):
-		self.graph[u].append(v)
-
+		self.graph[u].append(v) #append v to graph u's arrray of connected vertices via edges
 
 	def dfs(self, v):
 		# mark all vertex to not marked
@@ -14,8 +13,8 @@ class Graph:
 		marked = [False]* n
 
 		# recurse marked function
-		self. dfs_marked(v, marked)
-		return 1
+		self.dfs_marked(v, marked)
+
 
 	def dfs_marked(self, v, marked):
 		marked[v] = True  #current node is visited
@@ -23,7 +22,6 @@ class Graph:
 		for i in self.graph[v]:
 			if marked[i] == False:
 				self.dfs_marked(i, marked) #recursive
-
 		#if the point has not been marked then go and mark it true
 
 
@@ -39,7 +37,7 @@ class Graph:
 		marked[v] = True
 		Q.append(v)
 
-		#while queue: dequeue and update by getting all adjacent values that
+		#while queue is not empty: dequeue and update by getting all adjacent values that
 		#are not marked and mark and enqueue them
 		while Q:
 			v = Q.pop(0)

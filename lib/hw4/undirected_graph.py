@@ -46,7 +46,6 @@ class Graph:
             return True
         else:
             return False
-
            # vertex_from.add_neighbor(vertex_to)
             #if isinstance(vertex_from, Vertex) and isinstance(vertex_to, Vertex):
              #  self.vertices[vertex_from.name] = vertex_from.neighbors

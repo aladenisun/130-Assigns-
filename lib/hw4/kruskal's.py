@@ -16,14 +16,15 @@ class Graph:
         self.graph = sorted(self.graph, key=lambda item: item[2])  # sort the graph
 
         MST = []  # array holding the min spanning tree
-        parent = []  # holding current graph
-        position = []  # holding the position of each vertex
+        parent = []
+        position = []  #holding the position of each vertex
 
         i,j = 0
         k = self.V - 1
         for j in range(self.V):
             parent.append(j)
             position.append(0)
+
             index = 0
 
             while index < k:
