@@ -2,7 +2,6 @@ class Graph:
     def __init__(self):
         self.nodes = set()
         self.edges = dict()
-
     def add_node(self, node):
         self.nodes.add(node)
 
@@ -66,11 +65,59 @@ def BellmanFord(graph, source):
      return d, p
 
 def Ford_fullerskon(graph, source, sink):    # you can implement Bfs or dfs to get the path from source(start node) to sink(end node)
+    flow, path = 0, True
+    debug = None
+    while path:
+        path, reserve = depth_first_search(graph, source, sink)
+        flow += reserve
 
-return 1
+        for v, u in zip(path, path[1:]):
+            if graph.has_edge(v, u):
+                graph[v][u]['flow'] += reserve
+            else:
+                graph[u][v]['flow'] -= reserve
+
+        if callable(debug):
+            debug(graph, path, reserve, flow)
+    return 1
 
 
+def depth_first_search(graph, source, sink):
+    undirected = graph.to_undirected()
+    explored = {source}
+    stack = [(source, 0, undirected[source])]
 
+    while stack:
+        v, _, neighbours = stack[-1]
+        if v == sink:
+            break
+
+        # search the next neighbour
+        while neighbours:
+            u, e = neighbours.popitem()
+            if u not in explored:
+                break
+        else:
+            stack.pop()
+            continue
+
+        # current flow and capacity
+        in_direction = graph.has_edge(v, u)
+        capacity = e['capacity']
+        flow = e['flow']
+
+        # increase or redirect flow at the edge
+        if in_direction and flow < capacity:
+            stack.append((u, capacity - flow, undirected[u]))
+            explored.add(u)
+        elif not in_direction and flow:
+            stack.append((u, flow, undirected[u]))
+            explored.add(u)
+
+    # (source, sink) path and its flow reserve
+    reserve = min((f for _, f, _ in stack[1:]), default=0)
+    path = [v for v, _, _ in stack]
+    return path, reserve
 
 def initialize(graph, source):
     d = {}
