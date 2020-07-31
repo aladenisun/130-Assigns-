@@ -19,5 +19,3 @@ Sphinx, from http://www.sphinx-doc.org/en/stable/
 
 2.1 Install via 'pip install -U Sphinx'
 
-The "doc generation" phase can be manual or semi-automatic. 
-
